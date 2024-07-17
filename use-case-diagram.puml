@@ -1,0 +1,34 @@
+@startuml "Use case"
+left to right direction
+
+actor Player
+
+actor System
+
+rectangle Match {
+  usecase "Move a chess piece" as moveAChess
+  usecase "Undo move" as undoMove
+  usecase "Redo move" as redoMove
+  usecase "View move history" as viewMoveHistory
+  usecase "Check end game" as checkEndGame
+  usecase "Validate a move" as validateAMove
+  usecase "Surrender" as surrender
+}
+
+usecase "Save game" as saveGame
+usecase "Load game" as loadGame
+usecase "View match history" as viewMatchHistory
+
+Player --> moveAChess
+Player --> saveGame
+Player --> loadGame
+Player --> undoMove
+Player --> redoMove
+Player --> viewMoveHistory
+Player --> surrender
+Player --> viewMatchHistory
+
+System --> checkEndGame
+System --> validateAMove
+
+@enduml

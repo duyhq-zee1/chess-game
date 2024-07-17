@@ -1,0 +1,84 @@
+@startuml "Chess game"
+hide circle
+
+class Board {
+  + checkEndGame()
+  + moveChessPiece(chessPiece: ChessPieceBase, destinationCell: Cell)
+  - setUpBoard(chessPieces: ChessPieceBase[])
+}
+
+class Cell {
+  - row: number
+  - column: number
+  - chessPiece: ChessPieceBase
+  + setChessPiece(chessPiece: ChessPieceBase)
+  + getChessPiece(): ChessPieceBase
+}
+
+class Player {
+  - moveChessPiece(chessPiece: ChessPieceBase, destinationCell: Cell)
+}
+
+class ChessPieceBase {
+  - moveStrategies: IMoveStrategy[]
+  + setPlayer(player: Player)
+  + checkAvailableMoveCells()
+  + doMove()
+}
+
+interface IMoveStrategy { 
+  + checkAvailableMoveCells()
+  + doMove()
+}
+
+class MoveStraight implements IMoveStrategy { }
+
+class MoveDiagonal implements IMoveStrategy { }
+
+class MoveL implements IMoveStrategy { }
+
+class MaxRangeDecorator implements IMoveStrategy {
+  - IMoveStrategy move
+}
+
+class OnlyFowardDecorator implements IMoveStrategy {
+  - IMoveStrategy move
+}
+
+class Game {
+  - board: Board
+  - history: History
+  + startGame()
+  + endGame()
+  + undoMove()
+  + redoMove()
+}
+
+class History { 
+  - moves: HistoryMove[]
+  + getMove(index: number): HistoryMove
+  + addMove(chessPiece: ChessPieceBase, destinationCell: Cell)
+  + showHistory()
+}
+
+class HistoryMove {
+  - chessPiece: ChessPieceBase
+  - destinationCell: Cell
+}
+
+
+ChessPieceBase -down-o IMoveStrategy
+
+Board -down-o Cell
+Board -down-o ChessPieceBase
+Board .right.> History
+
+History -down-* HistoryMove
+
+Game -down-o Board
+Game -down-o History
+
+Player .up.> Board
+Player .up.> Game
+
+@enduml
