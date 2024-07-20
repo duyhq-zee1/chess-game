@@ -1,0 +1,16 @@
+@startuml "Activity diagram"
+title "Undo Move"
+
+start
+:Player choose undo move
+:System return 
+:Player choose a destination cell;
+:System move the chess piece;
+:System pause timer of the player;
+:System check is game over;
+:Switch player;
+repeat while (game not over)
+:End game;
+stop
+
+@enduml
