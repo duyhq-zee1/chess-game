@@ -6,29 +6,40 @@ actor Player
 actor System
 
 rectangle Match {
-  usecase "Move a chess piece" as moveAChess
+  
   usecase "Undo move" as undoMove
   usecase "Redo move" as redoMove
   usecase "View move history" as viewMoveHistory
   usecase "Check end game" as checkEndGame
   usecase "Validate a move" as validateAMove
+  usecase "Show a move valid" as showAMoveValid
   usecase "Surrender" as surrender
+  usecase "Save game" as saveGame
+  usecase "Move a chess piece" as moveAChess
+
+  Player --> undoMove
+  Player --> redoMove
+  Player --> viewMoveHistory
+  System --> checkEndGame
+  System --> validateAMove
+  System --> showAMoveValid
+  Player --> surrender
+  Player --> saveGame
+  Player --> moveAChess
+  
+  (validateAMove) ..> (moveAChess) : include
+  (checkEndGame) ..> (moveAChess) : include
+  (showAMoveValid) ..> (moveAChess) : include
 }
 
-usecase "Save game" as saveGame
+usecase "Play game" as playGame
 usecase "Load game" as loadGame
 usecase "View match history" as viewMatchHistory
+usecase "View match history detail" as viewDetailMatchHistory
 
-Player --> moveAChess
-Player --> saveGame
+Player --> playGame
 Player --> loadGame
-Player --> undoMove
-Player --> redoMove
-Player --> viewMoveHistory
-Player --> surrender
 Player --> viewMatchHistory
-
-System --> checkEndGame
-System --> validateAMove
+Player --> viewDetailMatchHistory
 
 @enduml

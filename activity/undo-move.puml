@@ -1,0 +1,14 @@
+@startuml "Activity diagram"
+title "Undo Move"
+|User|
+start
+:Choose undo move;
+|System|
+if (have previous move?) then (yes)
+    :Go back one step;
+    :Switch player;
+else (no)
+    :Show notification "Can't undo.";
+endif
+stop
+@enduml

@@ -2,8 +2,9 @@
 hide circle
 
 class Board {
-  + checkEndGame()
+  - cells: Cell[][]
   + moveChessPiece(chessPiece: ChessPieceBase, destinationCell: Cell)
+  - checkEndGame()
   - setUpBoard(chessPieces: ChessPieceBase[])
 }
 
@@ -17,6 +18,8 @@ class Cell {
 
 class Player {
   - moveChessPiece(chessPiece: ChessPieceBase, destinationCell: Cell)
+  - undoMove()
+  - redoMove()
 }
 
 class ChessPieceBase {
@@ -48,24 +51,29 @@ class OnlyFowardDecorator implements IMoveStrategy {
 class Game {
   - board: Board
   - history: History
+  - whitePlayer: Player
+  - blackPlayer: Player
   + startGame()
   + endGame()
   + undoMove()
   + redoMove()
+  + showHistory()
 }
 
 class History { 
   - moves: HistoryMove[]
+  - redoMoves: HistoryMove[]
   + getMove(index: number): HistoryMove
   + addMove(chessPiece: ChessPieceBase, destinationCell: Cell)
   + showHistory()
+  + undoMove()
+  + redoMove()
 }
 
 class HistoryMove {
   - chessPiece: ChessPieceBase
   - destinationCell: Cell
 }
-
 
 ChessPieceBase -down-o IMoveStrategy
 
@@ -77,6 +85,7 @@ History -down-* HistoryMove
 
 Game -down-o Board
 Game -down-o History
+Game -down-o Player
 
 Player .up.> Board
 Player .up.> Game

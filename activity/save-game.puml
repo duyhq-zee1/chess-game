@@ -1,0 +1,15 @@
+@startuml "Activity diagram"
+title "Save game"
+|User|
+start
+:Chooses save game;
+|System|
+:Saves games and move history to database;
+if (success?) then (yes)
+    :Shows notification "Save successfully";
+else (no)
+    :Shows notification "Save unsuccessfully";
+endif
+
+stop
+@enduml

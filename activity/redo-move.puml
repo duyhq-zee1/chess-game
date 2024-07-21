@@ -1,0 +1,14 @@
+@startuml "Activity diagram"
+title "Redo Move"
+|User|
+start
+:Choose redo move;
+|System|
+if (have next move?) then (yes)
+    :Restore a move that  Previously Undid;
+    :Switch player;
+else (no)
+    :Show notification "Can't redo.";
+endif
+stop
+@enduml
