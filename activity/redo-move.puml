@@ -1,5 +1,5 @@
 @startuml "Activity diagram"
-title "Undo Move"
+title "Redo Move"
 |User|
 start
 :Choose redo move;
