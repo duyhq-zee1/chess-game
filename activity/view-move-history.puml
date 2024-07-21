@@ -1,0 +1,8 @@
+@startuml "Activity diagram"
+title "View match history"
+
+start
+:Player chooses view history;
+:System shows list of move history;
+stop
+@enduml
