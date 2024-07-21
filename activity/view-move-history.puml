@@ -1,8 +1,9 @@
 @startuml "Activity diagram"
 title "View match history"
-
+|User|
 start
-:Player chooses view history;
-:System shows list of move history;
+:Chooses view history;
+|System|
+:Shows list of move history;
 stop
 @enduml

@@ -1,13 +1,14 @@
 @startuml "Activity diagram"
 title "Undo Move"
-
+|User|
 start
-:Player chooses save game;
-:System saves games and move history to database;
+:Chooses save game;
+|System|
+:Saves games and move history to database;
 if (success?) then (yes)
-    :System shows notification "Save successfully";
+    :Shows notification "Save successfully";
 else (no)
-    :System shows notification "Save unsuccessfully";
+    :Shows notification "Save unsuccessfully";
 endif
 
 stop
