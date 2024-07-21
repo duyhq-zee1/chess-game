@@ -1,0 +1,15 @@
+
+@startuml Activity Diagram
+title "Check end game"
+
+start
+repeat
+    :Is Game Over;
+    :Check King Position Is Checkmated;
+    :Check All Pieces Is Captured;
+    :Check No Available Moves;
+repeat while (Valid?) is (No) not (Yes)
+:End Game Result;
+
+stop
+@enduml
