@@ -1,0 +1,50 @@
+@startuml ValidateMove by Codeium
+
+actor User
+participant "ChessGame" as chess
+
+User -> chess: check if move is valid
+activate chess
+
+chess -> chess : get current position
+chess -> chess : get new position
+chess -> chess : check if move is diagonal
+
+alt move is diagonal
+
+    chess -> chess : get cells between current and new position
+    chess -> chess : check if all cells are empty
+
+else move is not diagonal
+
+    chess -> chess : check if move is horizontal or vertical
+
+    alt move is horizontal or vertical
+
+        chess -> chess : check if move is vertical
+
+        alt move is vertical
+
+            chess -> chess : check if move is up or down
+            chess -> chess : check if new position is in range
+
+        else move is not vertical
+
+            chess -> chess : check if move is horizontal
+            chess -> chess : check if new position is in range
+
+        end
+
+    else move is not horizontal or vertical
+
+        chess -> chess : check if move is diagonal
+
+    end
+
+end
+
+chess --> User : return result
+
+deactivate chess
+
+@enduml
