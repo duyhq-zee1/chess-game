@@ -4,11 +4,10 @@ title "Undo Move"
 start
 :Player choose undo move;
 if (have previous move?) then (yes)
-    :System brought the piece position just moved to the previous position;
+    :System go back one step;
     :System switch player;
 else (no)
     :System show notification "Can't undo.";
 endif
 stop
-
-    @enduml
+@enduml

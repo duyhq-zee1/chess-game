@@ -35,7 +35,7 @@ rectangle Match {
 usecase "Play game" as playGame
 usecase "Load game" as loadGame
 usecase "View match history" as viewMatchHistory
-usecase "View detail match history" as viewDetailMatchHistory
+usecase "View match history detail" as viewDetailMatchHistory
 
 Player --> playGame
 Player --> loadGame
