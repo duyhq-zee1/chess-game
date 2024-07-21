@@ -1,0 +1,13 @@
+@startuml "View match history detail activity diagram"
+|User|
+start
+:Select a match from the match history list;
+
+|System|
+:Retrieve match details;
+:Display match details;
+
+|User|
+:Review match details;
+stop
+@enduml

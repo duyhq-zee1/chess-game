@@ -27,9 +27,9 @@ rectangle Match {
   Player --> saveGame
   Player --> moveAChess
   
-  (validateAMove) .> (moveAChess) : include
-  (checkEndGame) .> (moveAChess) : include
-  (showAMoveValid) .> (moveAChess) : include
+  (validateAMove) ..> (moveAChess) : include
+  (checkEndGame) ..> (moveAChess) : include
+  (showAMoveValid) ..> (moveAChess) : include
 }
 
 usecase "Play game" as playGame

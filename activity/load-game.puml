@@ -1,0 +1,15 @@
+@startuml "Load game activity diagram"
+|User|
+start
+:Open game application;
+:Select "Load Game" option;
+
+|System|
+:Load the latest game state;
+:Initialize game board with loaded state;
+:Display the game board to the user;
+
+|User|
+:Continue playing the loaded game;
+stop
+@enduml
