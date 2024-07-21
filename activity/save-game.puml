@@ -1,5 +1,5 @@
 @startuml "Activity diagram"
-title "Undo Move"
+title "Save game"
 |User|
 start
 :Chooses save game;
