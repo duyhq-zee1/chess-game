@@ -1,0 +1,14 @@
+@startuml "Surrender"
+|User|
+start
+:Click on Surrender Button;
+
+|System|
+:Display game result screen;
+:End game;
+
+|User|
+:Review game result;
+
+stop
+@enduml
