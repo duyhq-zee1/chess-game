@@ -13,10 +13,7 @@ repeat
 :Choose a destination cell;
 
 |System|
-:Start timer of the player;
 :Move the chess piece;
-:Pause timer of the player;
-:Check if game is over;
 
 |System|
 :Switch player;
