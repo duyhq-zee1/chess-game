@@ -1,0 +1,11 @@
+@startuml "Activity diagram"
+title "Show valid move"
+|User|
+start
+:Select Chess Piece;
+|System|
+:Find Available Move;
+:Render Available Cell;
+stop
+
+@enduml
