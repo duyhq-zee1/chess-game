@@ -9,9 +9,6 @@ rectangle Match {
   usecase "Undo move" as undoMove
   usecase "Redo move" as redoMove
   usecase "View move history" as viewMoveHistory
-  usecase "Check end game" as checkEndGame
-  usecase "Validate a move" as validateAMove
-  usecase "Show a move valid" as showAMoveValid
   usecase "Surrender" as surrender
   usecase "Save game" as saveGame
   usecase "Move a chess piece" as moveAChess
@@ -22,10 +19,7 @@ rectangle Match {
   Player --> surrender
   Player --> saveGame
   Player --> moveAChess
-  
-  (moveAChess)..>(validateAMove) : include
-  (moveAChess)..>(checkEndGame)  : include
-  (moveAChess)..>(showAMoveValid)  : include
+
 }
 
 usecase "Play game" as playGame
