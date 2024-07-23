@@ -17,9 +17,10 @@ if (valid?) then (yes)
     if (end?) then (yes)
         :Show notification "End game";
     else (no)
+        :Swich player;   
     endif
 else (no)
-    :Show notification "You can't move this chess piece to this cell";
+    :Show notification "You can't move \n this chess piece to this cell";
 
 endif
 

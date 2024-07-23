@@ -3,7 +3,6 @@ left to right direction
 
 actor Player
 
-actor System
 
 rectangle Match {
   
@@ -20,16 +19,13 @@ rectangle Match {
   Player --> undoMove
   Player --> redoMove
   Player --> viewMoveHistory
-  System --> checkEndGame
-  System --> validateAMove
-  System --> showAMoveValid
   Player --> surrender
   Player --> saveGame
   Player --> moveAChess
   
-  (validateAMove) ..> (moveAChess) : include
-  (checkEndGame) ..> (moveAChess) : include
-  (showAMoveValid) ..> (moveAChess) : include
+  (moveAChess)..>(validateAMove) : include
+  (moveAChess)..>(checkEndGame)  : include
+  (moveAChess)..>(showAMoveValid)  : include
 }
 
 usecase "Play game" as playGame
