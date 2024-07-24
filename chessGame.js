@@ -1,3 +1,52 @@
+
+
+class Board {
+    constructor() {
+        this.cell = [];
+    }
+
+    moveChessPiece() {
+        
+    }
+
+    checkEndGame() {
+        
+    }
+
+    setUpBoard() {
+        
+    }
+}
+
+class Cell {
+    constructor(row, column, chessPiece) {
+        this.row = row;
+        this.column = column;
+        this.chessPiece = chessPiece;
+    }
+
+    setChessPiece(chessPieceBase) {
+        this.chessPiece = chessPieceBase;
+    }
+
+    getChessPiece() {
+        return this.chessPiece;
+    }
+}
+class Player {
+    moveChessPiece() {
+        
+    }
+
+    undoMove() {
+
+    }
+
+    redoMove() {
+
+    }
+}
+
 class ChessPieceBase {
     moveStrategies = [];
 }
@@ -35,10 +84,10 @@ let maxRangeStraightMove = new MaxRangeDecorator(new MoveStraightStrategy());
 
 
 class Game {
-    constructor(board, history, whilePlayer, blackPlayer) {
+    constructor(board, history, whitePlayer, blackPlayer) {
         this.board = board;
         this.history = history;
-        this.whilePlayer = whilePlayer;
+        this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;
     }
 
@@ -97,3 +146,5 @@ class historyMove {
         this.cell = cell;
     }
 }
+
+
