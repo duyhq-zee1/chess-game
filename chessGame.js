@@ -1,99 +1,115 @@
 class ChessPieceBase {
-    moveStrategies = [];
+  moveStrategies = [];
+
+  setPlayer = (player) => {};
+
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
 }
 
 class IMoveStrategy {
-    doMove = () => { };
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
 }
 
-class MoveStraightStrategy extends IMoveStrategy {
-    doMove = () => {
-        console.log('Move straight');
-    }
+class MoveStraight extends IMoveStrategy {
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
 }
 
-class MoveStraight1Strategy extends IMoveStrategy {
-    doMove = () => {
-        console.log('Move straight');
-    }
+class MoveDiagonal extends IMoveStrategy {
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
 }
 
+class MoveL extends IMoveStrategy {
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
+}
 
 class MaxRangeDecorator extends IMoveStrategy {
-    constructor(strategy) {
-        super();
-        this.strategy = strategy;
-    }
+  constructor(move) {
+    this.move = move;
+  }
 
-    doMove = () => {
-        this.strategy.doMove();
-        console.log('Max range');
-    }
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
 }
 
-let maxRangeStraightMove = new MaxRangeDecorator(new MoveStraightStrategy());
+class OnlyFowardDecorator extends IMoveStrategy {
+  constructor(move) {
+    this.move = move;
+  }
 
+  checkAvailableMoveCells = () => {};
+
+  doMove = () => {};
+}
 
 class Game {
-    constructor(board, history, whilePlayer, blackPlayer) {
-        this.board = board;
-        this.history = history;
-        this.whilePlayer = whilePlayer;
-        this.blackPlayer = blackPlayer;
-    }
+  constructor(board, history, whilePlayer, blackPlayer) {
+    this.board = board;
+    this.history = history;
+    this.whilePlayer = whilePlayer;
+    this.blackPlayer = blackPlayer;
+  }
 
-    startGame = () => {
-        console.log("Start Game")
-    }
-    endGame = () => {
-        console.log("End Game")
-    }
+  startGame = () => {
+    console.log('Start Game');
+  };
+  endGame = () => {
+    console.log('End Game');
+  };
 
-    undoMove = () => {
-        console.log("Undo Move")
-    }
+  undoMove = () => {
+    console.log('Undo Move');
+  };
 
-    redoMove = () => {
-        console.log("Redo Move")
-    }
+  redoMove = () => {
+    console.log('Redo Move');
+  };
 
-    showHistory = () => {
-        console.log("Show history")
-    }
-
+  showHistory = () => {
+    console.log('Show history');
+  };
 }
 
-
 class history {
-    constructor(board) {
-        this.moves = [];
-        this.board = board
-    }
+  constructor(board) {
+    this.moves = [];
+    this.board = board;
+  }
 
-    undoMove = () => {
-        console.log("Undo Move")
-    }
+  undoMove = () => {
+    console.log('Undo Move');
+  };
 
-    redoMove = () => {
-        console.log("Redo Move")
-    }
+  redoMove = () => {
+    console.log('Redo Move');
+  };
 
-    showHistory = () => {
-        console.log("Show history")
-    }
+  showHistory = () => {
+    console.log('Show history');
+  };
 
-    getMove = () => {
-        console.log("Get Move")
-    }
+  getMove = () => {
+    console.log('Get Move');
+  };
 
-    addMove = () => {
-        console.log("Add move")
-    }
+  addMove = () => {
+    console.log('Add move');
+  };
 }
 
 class historyMove {
-    constructor(chessPiece, cell) {
-        this.chessPiece = chessPiece;
-        this.cell = cell;
-    }
+  constructor(chessPiece, cell) {
+    this.chessPiece = chessPiece;
+    this.cell = cell;
+  }
 }
