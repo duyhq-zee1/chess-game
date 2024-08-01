@@ -1,0 +1,41 @@
+@startuml "Activity diagram"
+title "Move a chess piece"
+|User|
+start
+repeat
+    :Chooses a chess piece;
+    |System|
+    :Show valid move of chess piece;
+repeat
+    |User|
+    :Choose a cell want to move;
+    |System|
+    :Check valid move;
+        if (valid?) then (no)
+            :update chess piece to new cell;
+            :Check promotion|
+            if (promoted?) then (yes)
+                :show chess piece can promoted;
+                |User|
+                :Choose chess piece to promoted;
+                |System|
+                :Change chess piece;    
+            else (no)
+            endif
+            :Check end game|
+            if (end?) then (yes)
+                :Show notification "End game";
+            else (no)
+            endif
+        stop
+        else (yes)  
+            :Show notification "You can't move this \n chess piece to this cell";
+        endif
+' backward :This is backward;
+|User|
+repeat while (Choose another move) is (yes) not (no)
+repeat while (Choose another chees piece) is (yes) 
+
+@enduml
+
+
