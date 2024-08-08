@@ -76,3 +76,89 @@ The above PlantUML code represents an activity diagram for validating a chess mo
 16. Stop
 
 You can use a PlantUML tool to generate an image or SVG representation of this activity diagram.
+
+@startuml
+start
+:Select Chess Piece;
+:Get Current Position;
+:Get Target Position;
+:Check if Target Position is Valid;
+
+if (Valid Position?) then (yes)
+  :Check if Castling;
+  if (Castling?) then (yes)
+    :Check Castling Conditions;
+    if (Castling Conditions Met?) then (yes)
+      :Perform Castling;
+      :Update Board State;
+      :Check for Checkmate;
+
+      if (Checkmate?) then (yes)
+        :Declare Checkmate;
+      else (no)
+        :Check for Stalemate;
+        if (Stalemate?) then (yes)
+          :Declare Stalemate;
+        endif
+      endif
+    else (no)
+      :Invalid Move;
+    endif
+  else (no)
+    :Check if Target Position is Occupied;
+
+    if (Occupied?) then (yes)
+      :Check if Target Piece is Enemy;
+
+      if (Enemy?) then (yes)
+        :Check if Move is Legal;
+
+        if (Legal?) then (yes)
+          :Move Chess Piece;
+          :Update Board State;
+          :Check for Checkmate;
+
+          if (Checkmate?) then (yes)
+            :Declare Checkmate;
+          else (no)
+            :Check for Stalemate;
+
+            if (Stalemate?) then (yes)
+              :Declare Stalemate;
+            endif
+          endif
+        else (no)
+          :Invalid Move;
+        endif
+      else (no)
+        :Invalid Move;
+      endif
+    else (no)
+      :Check if Move is Legal;
+
+      if (Legal?) then (yes)
+        :Move Chess Piece;
+        :Update Board State;
+        :Check for Checkmate;
+
+        if (Checkmate?) then (yes)
+          :Declare Checkmate;
+        else (no)
+          :Check for Stalemate;
+
+          if (Stalemate?) then (yes)
+            :Declare Stalemate;
+          endif
+        endif
+      else (no)
+        :Invalid Move;
+      endif
+    endif
+  endif
+else (no)
+  :Invalid Position;
+endif
+
+:Deselect Chess Piece;
+stop
+@enduml
