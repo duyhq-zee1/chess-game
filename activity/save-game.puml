@@ -4,12 +4,21 @@ title "Save game"
 start
 :Chooses save game;
 |System|
-:Saves games and move history to database;
-if (success?) then (yes)
-    :Shows notification "Save successfully";
-else (no)
-    :Shows notification "Save unsuccessfully";
+:Check save file?;
+if (Have order game data?) then (no)
+:Show alet "Do you want to \n overide game save before?";
+|User|
+:access overide;
+else (yes)
 endif
+|System|
+:Saves games and \n move history to database;
+if (success?) then (yes)
+    :Shows notification \n "Save successfully";
+else (no)
+    :Shows notification \n "Save unsuccessfully";
+endif
+
 
 stop
 @enduml
