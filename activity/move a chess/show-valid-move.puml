@@ -1,16 +1,17 @@
-@startuml "Activity diagram"
-title "Show valid move"
 |User|
 start
 :Select Chess Piece;
 
 |System|
-:Find Available Move;
+:Check Castling;
+if (Castling Available?) then (yes)
+  :Render Castling Move;
+endif
 :Render Available Cell;
 
 |User|
 :Move Chess Piece to Available Cell;
-:Deselected Chess Piece;
+:Deselect Chess Piece;
 stop
 
 @enduml
