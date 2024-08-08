@@ -5,7 +5,7 @@ start
 repeat
     :Chooses a chess piece;
     |System|
-    :Show valid move of chess piece;
+    :Show valid move of chess piece|
 repeat
     |User|
     :Choose a cell want to move;
@@ -31,7 +31,7 @@ repeat
         else (yes)  
             :Show notification "You can't move this \n chess piece to this cell";
         endif
-' backward :This is backward;
+
 |User|
 repeat while (Choose another move) is (yes) not (no)
 repeat while (Choose another chees piece) is (yes) 
