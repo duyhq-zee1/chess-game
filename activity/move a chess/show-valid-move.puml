@@ -1,3 +1,4 @@
+@startuml "Activity diagram"
 |User|
 start
 :Select Chess Piece;
@@ -6,9 +7,9 @@ start
 :Check Castling;
 if (Castling Available?) then (yes)
   :Render Castling Move;
+else (no)
 endif
 :Render Available Cell;
-
 |User|
 :Move Chess Piece to Available Cell;
 :Deselect Chess Piece;
