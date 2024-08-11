@@ -9,11 +9,11 @@ class Board {
 }
 
 class Cell {
-  - row: number
-  - column: number
-  - chessPiece: ChessPieceBase
-  + setChessPiece(chessPiece: ChessPieceBase)
-  + getChessPiece(): ChessPieceBase
+  - x, y: number
+  - label: string
+  - assignLabel()
+  + getPiece(): Piece
+  + setPiece()
 }
 
 class Player {
@@ -22,30 +22,35 @@ class Player {
   - redoMove()
 }
 
-class ChessPieceBase {
-  - moveStrategies: IMoveStrategy[]
-  + setPlayer(player: Player)
-  + checkAvailableMoveCells()
-  + doMove()
+class PieceBase {
+  - white: boolean
+  - killed: boolean
+  + canMove(Board, Cell, Cell): boolean
 }
 
-interface IMoveStrategy { 
-  + checkAvailableMoveCells()
-  + doMove()
+class King extends PieceBase {
+  - castlingDone: boolean
+  + canMove(Board, Cell, Cell): boolean
 }
 
-class MoveStraight implements IMoveStrategy { }
-
-class MoveDiagonal implements IMoveStrategy { }
-
-class MoveL implements IMoveStrategy { }
-
-class MaxRangeDecorator implements IMoveStrategy {
-  - IMoveStrategy move
+class Queen extends PieceBase {
+  + canMove(Board, Cell, Cell): boolean
 }
 
-class OnlyFowardDecorator implements IMoveStrategy {
-  - IMoveStrategy move
+class Bishop extends PieceBase {
+  + canMove(Board, Cell, Cell): boolean
+}
+
+class Knight extends PieceBase {
+  + canMove(Board, Cell, Cell): boolean
+}
+
+class Rook extends PieceBase {
+  + canMove(Board, Cell, Cell): boolean
+}
+
+class Pawn extends PieceBase {
+  + canMove(Board, Cell, Cell): boolean
 }
 
 class Game {
@@ -75,10 +80,8 @@ class HistoryMove {
   - destinationCell: Cell
 }
 
-ChessPieceBase -down-o IMoveStrategy
-
 Board -down-o Cell
-Board -down-o ChessPieceBase
+Cell -down-o PieceBase
 Board .right.> History
 
 History -down-* HistoryMove
