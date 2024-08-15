@@ -22,34 +22,34 @@ class Player {
   - redoMove()
 }
 
-class PieceBase {
+class ChessPieceBase {
   - white: boolean
   - killed: boolean
   + canMove(Board, Cell, Cell): boolean
 }
 
-class King extends PieceBase {
+class King extends ChessPieceBase {
   - castlingDone: boolean
   + canMove(Board, Cell, Cell): boolean
 }
 
-class Queen extends PieceBase {
+class Queen extends ChessPieceBase {
   + canMove(Board, Cell, Cell): boolean
 }
 
-class Bishop extends PieceBase {
+class Bishop extends ChessPieceBase {
   + canMove(Board, Cell, Cell): boolean
 }
 
-class Knight extends PieceBase {
+class Knight extends ChessPieceBase {
   + canMove(Board, Cell, Cell): boolean
 }
 
-class Rook extends PieceBase {
+class Rook extends ChessPieceBase {
   + canMove(Board, Cell, Cell): boolean
 }
 
-class Pawn extends PieceBase {
+class Pawn extends ChessPieceBase {
   + canMove(Board, Cell, Cell): boolean
 }
 
@@ -81,7 +81,7 @@ class HistoryMove {
 }
 
 Board -down-o Cell
-Cell -down-o PieceBase
+Cell -down-o ChessPieceBase
 Board .right.> History
 
 History -down-* HistoryMove
