@@ -114,7 +114,7 @@ class Pawn extends ChessPieceBase {
 class Cell {
     constructor(x, y, label) {
         try {
-            if (x < 0 || x >= 8 || y < 0 || y >= 8) {
+            if (Math.abs(x) < 0 || Math.abs(x) >= 8 || Math.abs(y) < 0 || Math.abs(y) >= 8) {
                 throw new Error(`Invalid coordinates (${x}, ${y}). Coordinates must be between 0 and 7.`);
             }
 
@@ -150,15 +150,13 @@ class Board {
     }
 
     initializeCells() {
-        let cells = [];
-        for (let x = 0; x < 8; x++) {
-            cells[x] = [];
-            for (let y = 0; y < 8; y++) {
-                cells[x][y] = new Cell(x, y, `${String.fromCharCode(65 + x)}${y + 1}`);
-            }
-        }
-        return cells;
+        return Array.from({ length: 8 }, (_, x) =>
+            Array.from({ length: 8 }, (_, y) => 
+                new Cell(x, y, `${String.fromCharCode(65 + x)}${y + 1}`)
+            )
+        );
     }
+    
 
     moveChessPiece(chessPiece, destinationCell) {
         // Abstract method; should be implemented in subclass
